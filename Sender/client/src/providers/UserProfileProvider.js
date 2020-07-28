@@ -52,7 +52,6 @@ export function UserProfileProvider(props) {
   const getToken = () => firebase.auth().currentUser.getIdToken();
 
   const getUserProfile = (firebaseUserId) => {
-    debugger;
     return getToken().then((token) =>
       fetch(`${apiUrl}/${firebaseUserId}`, {
         method: "GET",

@@ -3,18 +3,23 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
+import { ClimbList } from "./climb/ClimbList";
+import "./ApplicationViews.css";
+import { CurrentUserProfile } from "./user/CurrentUserProfile";
 
 export default function ApplicationViews() {
-  const { isLoggedIn, logout } = useContext(UserProfileContext);
+  const { isLoggedIn } = useContext(UserProfileContext);
 
   return (
     <main>
       <Switch>
         <Route path="/" exact>
           {isLoggedIn ? (
-            <div>
-              <p>Hello, Welcome to Sender</p>
-              <p onClick={logout}>Logout</p>
+            <div className="dashboardContainer">
+              <div className="currentUserProfileContainer">
+                <CurrentUserProfile />
+              </div>
+              <ClimbList />
             </div>
           ) : (
             <Redirect to="/login" />

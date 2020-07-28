@@ -1,0 +1,11 @@
+.dashboardContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.currentUserProfileContainer {
+  display: flex;
+  margin-right: 275px;
+  margin-top: 20px;
+  margin-left: 20px;
+}

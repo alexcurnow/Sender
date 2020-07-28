@@ -57,6 +57,7 @@ CREATE TABLE [Climb] (
   [Id] int IDENTITY PRIMARY KEY NOT NULL,
   [UserProfileId] int NOT NULL,
   [GradeId] int NOT NULL,
+  [Color] nvarchar(50) NOT NULL,
   [ImageUrl] nvarchar(255) NOT NULL,
   [VideoUrl] nvarchar(255),
   [Gym] nvarchar(255) NOT NULL,

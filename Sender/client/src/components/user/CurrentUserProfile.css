@@ -1,0 +1,9 @@
+.userProfile {
+  height: 200px;
+  width: 150px;
+}
+
+.card-title {
+  display: flex;
+  justify-content: center;
+}
