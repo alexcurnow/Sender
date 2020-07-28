@@ -27,6 +27,21 @@ namespace Sender.Repositories
                             .ToList();
         }
 
-      
+        public List<Climb> GetByUserProfileId(int id)
+        {
+            return _context.Climb
+                            .Include(c => c.UserProfile)
+                            .Include(c => c.Grade)
+                            .Include(c => c.State)
+                            .OrderByDescending(c => c.DateCreated)
+                            .Where(c => c.UserProfileId == id)
+                            .ToList();
+        }
+
+        public void AddClimb(Climb climb)
+        {
+            _context.Add(climb);
+            _context.SaveChanges();
+        }
     }
 }

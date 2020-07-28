@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sender.Data;
+using Sender.Models;
 using Sender.Repositories;
 
 namespace Sender.Controllers
@@ -26,6 +27,20 @@ namespace Sender.Controllers
         public IActionResult Get()
         {
             return Ok(_climbRepository.GetAll());
+        }
+
+        [HttpGet("getByUser/{id}")]
+        public IActionResult GetByUser(int id)
+        {
+            return Ok(_climbRepository.GetByUserProfileId(id));
+        }
+
+        [HttpPost]
+        public IActionResult Post(Climb climb)
+        {
+            climb.DateCreated = DateTime.Now;
+            _climbRepository.AddClimb(climb);
+            return CreatedAtAction("Get", new { id = climb.Id }, climb);
         }
     } 
 }

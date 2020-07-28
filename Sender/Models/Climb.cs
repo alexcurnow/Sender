@@ -18,6 +18,8 @@ namespace Sender.Models
         public int GradeId { get; set; }
         public Grade Grade { get; set; }
         [Required]
+        public string Color { get; set; }
+        [Required]
         public string ImageUrl { get; set; }
         public string VideoUrl { get; set; }
         [Required]
