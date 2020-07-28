@@ -24,10 +24,11 @@ export const Climb = ({ climb }) => {
         <CardSubtitle>
           Uploaded by <em>{climb.userProfile.displayName}</em>
           <div>{climb.gym}</div>
-          <div>{climb.city}</div>
-          <div>{climb.state.acronym}</div>
+          <div>
+            {climb.city}, {climb.state.acronym}
+          </div>
         </CardSubtitle>
-        <CardText>{climb.notes}</CardText>
+        <CardText>Notes: {climb.notes}</CardText>
         <Button>Solve it!</Button>
       </CardBody>
     </Card>

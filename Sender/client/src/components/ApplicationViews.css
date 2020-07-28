@@ -1,11 +1,16 @@
 .dashboardContainer {
   display: flex;
-  justify-content: center;
+  /* justify-content: space-evenly; */
 }
 
 .currentUserProfileContainer {
   display: flex;
-  margin-right: 275px;
+  /* margin-right: 275px;
   margin-top: 20px;
-  margin-left: 20px;
+  margin-left: 20px; */
+}
+
+.currentUserClimbs {
+  display: flex;
+  /* justify-content: center; */
 }

@@ -5,6 +5,7 @@ export const ClimbContext = createContext();
 
 export const ClimbProvider = (props) => {
   const [climbs, setClimbs] = useState([]);
+  const [currentUserClimbs, setCurrentUserClimbs] = useState([]);
 
   const { getToken } = useContext(UserProfileContext);
 
@@ -20,11 +21,25 @@ export const ClimbProvider = (props) => {
         .then(setClimbs)
     );
 
+  const getByUserProfileId = (id) =>
+    getToken().then((token) =>
+      fetch(`/api/climb/getbyuser/${id}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then(setCurrentUserClimbs)
+    );
+
   return (
     <ClimbContext.Provider
       value={{
         climbs,
+        currentUserClimbs,
         getAllClimbs,
+        getByUserProfileId,
         setClimbs,
       }}
     >

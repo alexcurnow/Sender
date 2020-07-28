@@ -27,5 +27,11 @@ namespace Sender.Controllers
         {
             return Ok(_climbRepository.GetAll());
         }
+
+        [HttpGet("getByUser/{id}")]
+        public IActionResult GetByUser(int id)
+        {
+            return Ok(_climbRepository.GetByUserProfileId(id));
+        }
     } 
 }
