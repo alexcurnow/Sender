@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { ClimbContext } from "../../providers/ClimbProvider";
 import { Climb } from "./Climb";
 import "./Climb.css";

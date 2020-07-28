@@ -6,7 +6,8 @@ import Register from "./auth/Register";
 import { ClimbList } from "./climb/ClimbList";
 import "./ApplicationViews.css";
 import { CurrentUserProfile } from "./user/CurrentUserProfile";
-import { CurrentUserClimbs } from "./climb/CurrentUserClimbs";
+import { CurrentUserClimbList } from "./climb/CurrentUserClimbList";
+import { NewClimbForm } from "./climb/NewClimbForm";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
@@ -30,7 +31,17 @@ export default function ApplicationViews() {
         <Route path="/userclimbs">
           {isLoggedIn ? (
             <div className="currentUserClimbs">
-              <CurrentUserClimbs />
+              <CurrentUserClimbList />
+            </div>
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+
+        <Route path="/uploadClimb">
+          {isLoggedIn ? (
+            <div className="newClimbFormContainer">
+              <NewClimbForm />
             </div>
           ) : (
             <Redirect to="/login" />

@@ -33,6 +33,24 @@ export const ClimbProvider = (props) => {
         .then(setCurrentUserClimbs)
     );
 
+  const addClimb = (climb) => {
+    return getToken().then((token) =>
+      fetch("/api/climb", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(climb),
+      }).then((resp) => {
+        if (resp.ok) {
+          return resp.json();
+        }
+        throw new Error("Unauthorized");
+      })
+    );
+  };
+
   return (
     <ClimbContext.Provider
       value={{
@@ -41,6 +59,7 @@ export const ClimbProvider = (props) => {
         getAllClimbs,
         getByUserProfileId,
         setClimbs,
+        addClimb,
       }}
     >
       {props.children}

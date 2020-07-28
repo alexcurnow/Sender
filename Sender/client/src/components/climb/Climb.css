@@ -1,6 +1,7 @@
 .climbList {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   width: 500px;
   margin-right: auto;
   margin-left: auto;

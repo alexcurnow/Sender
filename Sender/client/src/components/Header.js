@@ -42,6 +42,11 @@ export default function Header() {
                     Your Climbs
                   </NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/uploadclimb">
+                    Upload Climb
+                  </NavLink>
+                </NavItem>
               </>
             )}
           </Nav>

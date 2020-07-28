@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { ClimbContext } from "../../providers/ClimbProvider";
 import { Climb } from "./Climb";
 
-export const CurrentUserClimbs = () => {
+export const CurrentUserClimbList = () => {
   const { currentUserClimbs, getByUserProfileId } = useContext(ClimbContext);
   const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
 
