@@ -43,5 +43,14 @@ namespace Sender.Repositories
             _context.Add(climb);
             _context.SaveChanges();
         }
+
+        public Climb GetById(int id)
+        {
+           return _context.Climb
+                      .Include(c => c.UserProfile)
+                            .Include(c => c.Grade)
+                            .Include(c => c.State)
+                            .FirstOrDefault(c => c.Id == id);
+        }
     }
 }

@@ -6,6 +6,7 @@ export const ClimbContext = createContext();
 export const ClimbProvider = (props) => {
   const [climbs, setClimbs] = useState([]);
   const [currentUserClimbs, setCurrentUserClimbs] = useState([]);
+  const [currentClimb, setCurrentClimb] = useState({});
 
   const { getToken } = useContext(UserProfileContext);
 
@@ -20,6 +21,19 @@ export const ClimbProvider = (props) => {
         .then((res) => res.json())
         .then(setClimbs)
     );
+
+  const getClimbById = (id) => {
+    return getToken().then((token) =>
+      fetch(`/api/climb/${id}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then(setCurrentClimb)
+    );
+  };
 
   const getByUserProfileId = (id) =>
     getToken().then((token) =>
@@ -56,10 +70,12 @@ export const ClimbProvider = (props) => {
       value={{
         climbs,
         currentUserClimbs,
+        currentClimb,
         getAllClimbs,
         getByUserProfileId,
         setClimbs,
         addClimb,
+        getClimbById,
       }}
     >
       {props.children}
