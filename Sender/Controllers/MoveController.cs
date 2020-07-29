@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sender.Data;
+using Sender.Models;
 using Sender.Repositories;
 
 namespace Sender.Controllers
@@ -31,6 +32,13 @@ namespace Sender.Controllers
         public IActionResult GetByClimb(int id)
         {
             return Ok(_moveRepository.GetByClimbId(id));
+        }
+
+        [HttpPost]
+        public IActionResult Post(Move move)
+        {
+            _moveRepository.AddMove(move);
+            return CreatedAtAction("Get", new { id = move.Id }, move);
         }
     }
 }

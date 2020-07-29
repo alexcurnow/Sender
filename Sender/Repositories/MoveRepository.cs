@@ -30,5 +30,11 @@ namespace Sender.Repositories
                             .Where(m => m.ClimbId == id)
                             .ToList();
         }
+
+        public void AddMove(Move move)
+        {
+            _context.Add(move);
+            _context.SaveChanges();
+        }
     }
 }

@@ -9,11 +9,10 @@ export const MoveProvider = (props) => {
   const { getToken } = useContext(UserProfileContext);
 
   const getMovesByClimbId = (id) => {
-    debugger;
     return getToken().then((token) =>
       fetch(`api/move/getbyclimb/${id}`, {
         method: "GET",
-        header: {
+        headers: {
           Authorization: `Bearer ${token}`,
         },
       })
@@ -22,10 +21,29 @@ export const MoveProvider = (props) => {
     );
   };
 
+  const addMove = (move) => {
+    return getToken().then((token) =>
+      fetch("/api/move", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(move),
+      }).then((resp) => {
+        if (resp.ok) {
+          return resp.json();
+        }
+        throw new Error("Unauthorized");
+      })
+    );
+  };
+
   return (
     <MoveContext.Provider
       value={{
         moves,
+        addMove,
         getMovesByClimbId,
       }}
     >
