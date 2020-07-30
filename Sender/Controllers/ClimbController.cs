@@ -35,6 +35,12 @@ namespace Sender.Controllers
             return Ok(_climbRepository.GetByUserProfileId(id));
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            return Ok(_climbRepository.GetById(id));
+        }
+
         [HttpPost]
         public IActionResult Post(Climb climb)
         {

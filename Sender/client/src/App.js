@@ -6,6 +6,8 @@ import { ClimbProvider } from "./providers/ClimbProvider";
 import Header from "./components/Header";
 import { GradeProvider } from "./providers/GradeProvider";
 import { StateProvider } from "./providers/StateProvider";
+import { MoveProvider } from "./providers/MoveProvider";
+import { LimbProvider } from "./providers/LimbProvider";
 
 function App() {
   return (
@@ -14,8 +16,12 @@ function App() {
         <GradeProvider>
           <StateProvider>
             <ClimbProvider>
-              <Header />
-              <ApplicationViews />
+              <LimbProvider>
+                <MoveProvider>
+                  <Header />
+                  <ApplicationViews />
+                </MoveProvider>
+              </LimbProvider>
             </ClimbProvider>
           </StateProvider>
         </GradeProvider>

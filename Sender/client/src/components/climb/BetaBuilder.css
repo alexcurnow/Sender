@@ -1,0 +1,15 @@
+.betaBuilderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+.submitBeta {
+  width: 120px;
+  margin-top: 20px;
+}

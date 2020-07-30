@@ -41,7 +41,7 @@ export const NewClimbForm = () => {
   const submitForm = (e) => {
     e.preventDefault();
     addClimb(newClimb)
-      .then(() => history.push("/"))
+      .then(() => history.push(`/userclimbs`))
       .catch((err) => alert(`An error occured: ${err.message}`));
   };
 
