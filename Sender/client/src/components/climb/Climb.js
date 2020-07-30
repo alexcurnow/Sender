@@ -29,7 +29,9 @@ export const Climb = ({ climb }) => {
           </div>
         </CardSubtitle>
         <CardText>Notes: {climb.notes}</CardText>
-        <Button>Solve it!</Button>
+        <Link to={`solution/${climb.id}`}>
+          <Button>Solve it!</Button>
+        </Link>
       </CardBody>
     </Card>
   );

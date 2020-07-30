@@ -10,7 +10,7 @@ export const MoveProvider = (props) => {
 
   const getMovesByClimbId = (id) => {
     return getToken().then((token) =>
-      fetch(`api/move/getbyclimb/${id}`, {
+      fetch(`/api/move/getbyclimb/${id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

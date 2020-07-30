@@ -28,6 +28,7 @@ namespace Sender.Repositories
                             .Include(m => m.Climb)
                             .Include(m => m.Limb)
                             .Where(m => m.ClimbId == id)
+                            .OrderBy(m => m.SequenceNumber)
                             .ToList();
         }
 

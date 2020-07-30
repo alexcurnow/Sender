@@ -1,11 +1,19 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
-export const LimbSelect = ({ limbs, setLimb, toggleLimbModal }) => {
+export const LimbSelect = ({
+  limbs,
+  setLimb,
+  toggleLimbModal,
+  setMovesList,
+  newMove,
+  movesList,
+}) => {
   return (
     <Form
       onSubmit={(e) => {
         e.preventDefault();
+        setMovesList((movesList) => [...movesList, newMove]);
         toggleLimbModal();
       }}
     >
@@ -17,7 +25,6 @@ export const LimbSelect = ({ limbs, setLimb, toggleLimbModal }) => {
           id="limbSelect"
           onChange={(e) => {
             setLimb(e.target.value);
-            console.log(e.target.value);
           }}
         >
           <option key="limb-0" value="0">

@@ -1,19 +1,24 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { ClimbContext } from "../../providers/ClimbProvider";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import "./BetaBuilder.css";
 import { LimbContext } from "../../providers/LimbProvider";
 import { Modal, Button } from "reactstrap";
 import { LimbSelect } from "../limb/LimbSelect";
+import { MoveContext } from "../../providers/MoveProvider";
 
 export const BetaBuilder = () => {
   const { id } = useParams();
   const parsedId = parseInt(id);
+  const history = useHistory();
 
   const { currentClimb, getClimbById } = useContext(ClimbContext);
   const { limbs, getAllLimbs } = useContext(LimbContext);
+  const { addMove } = useContext(MoveContext);
+
   const [limb, setLimb] = useState();
   const [sequenceNum, setSequenceNum] = useState(0);
+  const [movesList, setMovesList] = useState([]);
 
   const [limbModal, setLimbModal] = useState(false);
 
@@ -60,16 +65,25 @@ export const BetaBuilder = () => {
     sequenceNumber: sequenceNum,
     xcoord: x,
     ycoord: y,
-    rcoord: r,
+    radius: r,
+  };
+
+  const uploadMovesList = (movesList) => {
+    movesList.forEach((move) => addMove(move));
+    history.push("/");
   };
 
   return (
     <>
+      <h1>Build your beta</h1>
       <Modal isOpen={limbModal}>
         <LimbSelect
           limbs={limbs}
           setLimb={setLimb}
           toggleLimbModal={toggleLimbModal}
+          setMovesList={setMovesList}
+          newMove={newMove}
+          movesList={movesList}
         />
       </Modal>
       <canvas
@@ -85,7 +99,14 @@ export const BetaBuilder = () => {
         src={currentClimb.imageUrl}
         alt="climbing problem"
       />
-      <Button onClick={(e) => console.log(newMove)}>Upload Beta</Button>
+      <Button
+        className="submitBeta"
+        onClick={(e) => {
+          uploadMovesList(movesList);
+        }}
+      >
+        Upload Beta
+      </Button>
     </>
   );
 };

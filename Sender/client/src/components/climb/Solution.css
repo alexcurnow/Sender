@@ -1,4 +1,4 @@
-.betaBuilderContainer {
+.solutionContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,11 @@
   display: none;
 }
 
-.submitBeta {
-  width: 120px;
-  margin-top: 20px;
+.movesListContainer {
+  margin-top: 60px;
+  margin-right: 100px;
+}
+
+.invisible {
+  visibility: hidden;
 }
