@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { ClimbContext } from "../../providers/ClimbProvider";
 import { CurrentUserClimb } from "./CurrentUserClimb";
+import "./Climb.css";
 
 export const CurrentUserClimbList = () => {
   const { currentUserClimbs, getByUserProfileId } = useContext(ClimbContext);
@@ -13,7 +14,9 @@ export const CurrentUserClimbList = () => {
   return (
     <div className="climbList">
       {currentUserClimbs.map((c) => (
-        <CurrentUserClimb key={c.id} climb={c} />
+        <div className="climbCard">
+          <CurrentUserClimb key={c.id} climb={c} />
+        </div>
       ))}
     </div>
   );

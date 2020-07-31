@@ -13,7 +13,9 @@ export const ClimbList = () => {
   return (
     <div className="climbList">
       {climbs.map((c) => (
-        <Climb key={c.id} climb={c} />
+        <div className="climbCard">
+          <Climb key={c.id} climb={c} />
+        </div>
       ))}
     </div>
   );

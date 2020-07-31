@@ -24,7 +24,9 @@ export default function ApplicationViews() {
               <div className="currentUserProfileContainer">
                 <CurrentUserProfile />
               </div>
-              <ClimbList />
+              <div className="climbListContainer">
+                <ClimbList />
+              </div>
             </div>
           ) : (
             <Redirect to="/login" />
@@ -43,7 +45,7 @@ export default function ApplicationViews() {
 
         <Route path="/userclimbs">
           {isLoggedIn ? (
-            <div className="currentUserClimbs">
+            <div className="climbListContainer">
               <CurrentUserClimbList />
             </div>
           ) : (
