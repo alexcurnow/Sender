@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
   Card,
   CardImg,
@@ -9,6 +9,8 @@ import {
   Button,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { CommentList } from "../comment/CommentList";
+import { CommentContext } from "../../providers/CommentProvider";
 
 export const Climb = ({ climb }) => {
   return (

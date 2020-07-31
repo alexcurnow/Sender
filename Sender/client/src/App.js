@@ -8,6 +8,7 @@ import { GradeProvider } from "./providers/GradeProvider";
 import { StateProvider } from "./providers/StateProvider";
 import { MoveProvider } from "./providers/MoveProvider";
 import { LimbProvider } from "./providers/LimbProvider";
+import { CommentProvider } from "./providers/CommentProvider";
 
 function App() {
   return (
@@ -15,14 +16,16 @@ function App() {
       <UserProfileProvider>
         <GradeProvider>
           <StateProvider>
-            <ClimbProvider>
-              <LimbProvider>
-                <MoveProvider>
-                  <Header />
-                  <ApplicationViews />
-                </MoveProvider>
-              </LimbProvider>
-            </ClimbProvider>
+            <CommentProvider>
+              <ClimbProvider>
+                <LimbProvider>
+                  <MoveProvider>
+                    <Header />
+                    <ApplicationViews />
+                  </MoveProvider>
+                </LimbProvider>
+              </ClimbProvider>
+            </CommentProvider>
           </StateProvider>
         </GradeProvider>
       </UserProfileProvider>
