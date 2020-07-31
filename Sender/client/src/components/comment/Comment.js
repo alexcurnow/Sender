@@ -13,7 +13,10 @@ import "./Comment.css";
 export const Comment = ({ c, toggleEdit, toggleDelete, setComment }) => {
   const [date, time] = c.dateCreated.split("T");
 
-  return (
+  const currentUser = JSON.parse(sessionStorage.getItem("userProfile"));
+  // const userId = parseInt(currentUser.id);
+
+  return c.userProfileId === currentUser.id ? (
     <>
       <div className="p-3 my-2 rounded">
         <Toast>
@@ -25,27 +28,49 @@ export const Comment = ({ c, toggleEdit, toggleDelete, setComment }) => {
             />
             <span>{c.userProfile.displayName}</span>
           </ToastHeader>
-          <ToastBody>{c.message}</ToastBody>
+          <ToastBody>
+            {c.message}
+            <p className="editDeleteContainer">
+              <span>
+                <a
+                  className="editComment"
+                  onClick={() => {
+                    setComment(c);
+                    toggleEdit();
+                  }}
+                >
+                  edit
+                </a>
+              </span>
+              <span>
+                <a
+                  className="deleteComment"
+                  onClick={() => {
+                    setComment(c);
+                    toggleDelete();
+                  }}
+                >
+                  delete
+                </a>
+              </span>
+            </p>
+          </ToastBody>
         </Toast>
       </div>
-      <Button
-        color="primary"
-        onClick={() => {
-          setComment(c);
-          toggleEdit();
-        }}
-      >
-        Edit
-      </Button>
-      <Button
-        color="danger"
-        onClick={() => {
-          setComment(c);
-          toggleDelete();
-        }}
-      >
-        Delete
-      </Button>
     </>
+  ) : (
+    <div className="p-3 my-2 rounded">
+      <Toast>
+        <ToastHeader>
+          <img
+            className="profileImg"
+            src={c.userProfile.imageLocation}
+            alt="user profile image"
+          />
+          <span>{c.userProfile.displayName}</span>
+        </ToastHeader>
+        <ToastBody>{c.message}</ToastBody>
+      </Toast>
+    </div>
   );
 };

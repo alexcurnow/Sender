@@ -20,11 +20,11 @@ export const EditCommentForm = ({ comment, climbId, toggle }) => {
     <form className="editCommentForm">
       <fieldset>
         <div className="form-group">
-          <label htmlFor="content">
+          <label htmlFor="message">
             Comment:
             <input
               type="text"
-              name="content"
+              name="message"
               required
               autoFocus
               className="form-control"

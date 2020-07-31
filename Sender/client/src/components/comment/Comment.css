@@ -2,8 +2,28 @@
   border-radius: 50%;
   height: 50px;
   width: 50px;
+  margin-right: 10px;
 }
 
 .userProfile {
   margin: 0;
+}
+
+.editDeleteContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.editComment {
+  margin-right: 10px;
+}
+
+.editComment:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.deleteComment:hover {
+  cursor: pointer;
+  color: blue;
 }
