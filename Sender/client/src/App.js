@@ -9,25 +9,28 @@ import { StateProvider } from "./providers/StateProvider";
 import { MoveProvider } from "./providers/MoveProvider";
 import { LimbProvider } from "./providers/LimbProvider";
 import { CommentProvider } from "./providers/CommentProvider";
+import { UserClimbSolvedProvider } from "./providers/UserClimbSolvedProvider";
 
 function App() {
   return (
     <Router>
       <UserProfileProvider>
-        <GradeProvider>
-          <StateProvider>
-            <CommentProvider>
-              <ClimbProvider>
-                <LimbProvider>
-                  <MoveProvider>
-                    <Header />
-                    <ApplicationViews />
-                  </MoveProvider>
-                </LimbProvider>
-              </ClimbProvider>
-            </CommentProvider>
-          </StateProvider>
-        </GradeProvider>
+        <UserClimbSolvedProvider>
+          <GradeProvider>
+            <StateProvider>
+              <CommentProvider>
+                <ClimbProvider>
+                  <LimbProvider>
+                    <MoveProvider>
+                      <Header />
+                      <ApplicationViews />
+                    </MoveProvider>
+                  </LimbProvider>
+                </ClimbProvider>
+              </CommentProvider>
+            </StateProvider>
+          </GradeProvider>
+        </UserClimbSolvedProvider>
       </UserProfileProvider>
     </Router>
   );

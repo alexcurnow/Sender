@@ -13,7 +13,7 @@ export const ClimbList = () => {
   return (
     <div className="climbList">
       {climbs.map((c) => (
-        <div className="climbCard">
+        <div key={`climbCard${c.id}`} className="climbCard">
           <Climb key={c.id} climb={c} />
         </div>
       ))}

@@ -1,9 +1,23 @@
-import React from "react";
-import { Card, CardImg, CardBody, CardTitle } from "reactstrap";
+import React, { useContext, useEffect } from "react";
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import "./CurrentUserProfile.css";
+import { UserClimbSolvedContext } from "../../providers/UserClimbSolvedProvider";
+import { ClimbContext } from "../../providers/ClimbProvider";
 
 export const CurrentUserProfile = () => {
   const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+
+  const { userClimbsSolved, getUserClimbsSolvedByUserProfileId } = useContext(
+    UserClimbSolvedContext
+  );
+
+  const { currentUserClimbs, getByUserProfileId } = useContext(ClimbContext);
+
+  useEffect(() => {
+    getUserClimbsSolvedByUserProfileId(userProfile.id);
+    getByUserProfileId(userProfile.id);
+  }, []);
+
   return (
     <Card className="userProfile">
       <CardImg
@@ -15,6 +29,8 @@ export const CurrentUserProfile = () => {
       />
       <CardBody>
         <CardTitle>{userProfile.displayName}</CardTitle>
+        <CardSubtitle>Climbs Solved: {userClimbsSolved.length}</CardSubtitle>
+        <CardSubtitle>Climbs Uploaded: {currentUserClimbs.length}</CardSubtitle>
       </CardBody>
     </Card>
   );
