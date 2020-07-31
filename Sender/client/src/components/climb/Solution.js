@@ -3,16 +3,20 @@ import { useParams, useHistory } from "react-router-dom";
 import { ClimbContext } from "../../providers/ClimbProvider";
 import "./Solution.css";
 import { MoveContext } from "../../providers/MoveProvider";
+import { UserClimbSolvedContext } from "../../providers/UserClimbSolvedProvider";
 
 export const Solution = () => {
   const { id } = useParams();
   const parsedId = parseInt(id);
   const history = useHistory();
 
+  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+
   const [clickCount, setClickCount] = useState(1);
 
   const { currentClimb, getClimbById } = useContext(ClimbContext);
   const { moves, getMovesByClimbId } = useContext(MoveContext);
+  const { addUserClimbSolved } = useContext(UserClimbSolvedContext);
 
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
@@ -54,6 +58,11 @@ export const Solution = () => {
   //   ctx.stroke();
   // };
 
+  const newUserClimbSolved = {
+    userProfileId: userProfile.id,
+    climbId: parsedId,
+  };
+
   const alertComplete = (moves) => {
     const finalMove = moves.slice(-1)[0];
     alert(
@@ -78,6 +87,7 @@ export const Solution = () => {
       });
     } else if (clickCount === moves.length) {
       alertComplete(moves);
+      addUserClimbSolved(newUserClimbSolved);
       history.push("/");
     }
   };
