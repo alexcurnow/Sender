@@ -1,6 +1,11 @@
 .dashboardContainer {
   display: flex;
-  /* justify-content: space-evenly; */
+}
+
+.climbListContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
 .currentUserProfileContainer {
@@ -27,4 +32,12 @@
   width: 500px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.newClimbFormContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
 }

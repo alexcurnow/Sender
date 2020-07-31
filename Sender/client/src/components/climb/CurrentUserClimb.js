@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import {
   Card,
   CardImg,
@@ -9,7 +9,6 @@ import {
   Button,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { MoveContext } from "../../providers/MoveProvider";
 
 export const CurrentUserClimb = ({ climb }) => {
   return (
@@ -27,8 +26,8 @@ export const CurrentUserClimb = ({ climb }) => {
           <div>
             {climb.city}, {climb.state.acronym}
           </div>
+          Notes: {climb.notes}
         </CardSubtitle>
-        <CardText>Notes: {climb.notes}</CardText>
         <Link to={`/betabuilder/${climb.id}`}>
           <Button>Build the Beta!</Button>
         </Link>

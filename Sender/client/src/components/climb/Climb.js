@@ -1,16 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import {
   Card,
   CardImg,
   CardBody,
   CardTitle,
   CardSubtitle,
-  CardText,
   Button,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { CommentList } from "../comment/CommentList";
-import { CommentContext } from "../../providers/CommentProvider";
 
 export const Climb = ({ climb }) => {
   return (
@@ -24,13 +21,8 @@ export const Climb = ({ climb }) => {
           </Link>
         </CardTitle>
         <CardSubtitle>
-          Uploaded by <em>{climb.userProfile.displayName}</em>
-          <div>{climb.gym}</div>
-          <div>
-            {climb.city}, {climb.state.acronym}
-          </div>
+          {climb.city}, {climb.state.acronym}
         </CardSubtitle>
-        <CardText>Notes: {climb.notes}</CardText>
         <Link to={`solution/${climb.id}`}>
           <Button>Solve it!</Button>
         </Link>

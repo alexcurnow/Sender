@@ -65,6 +65,7 @@ export const NewClimbForm = () => {
 
   return (
     <Form onSubmit={submitForm}>
+      <h1>Upload a new climb!</h1>
       <FormGroup>
         <Label for="grade">Grade</Label>
         <Input
