@@ -52,5 +52,18 @@ namespace Sender.Repositories
                             .Include(c => c.State)
                             .FirstOrDefault(c => c.Id == id);
         }
+
+        public void DeleteClimb(int id)
+        {
+            var climb = _context.Climb.FirstOrDefault(c => c.Id == id);
+            _context.Climb.Remove(climb);
+            _context.SaveChanges();
+
+        }
+        public void Update(Climb climb)
+        {
+            _context.Entry(climb).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
     }
 }

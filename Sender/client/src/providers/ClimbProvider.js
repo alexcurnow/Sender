@@ -35,8 +35,8 @@ export const ClimbProvider = (props) => {
     );
   };
 
-  const getByUserProfileId = (id) =>
-    getToken().then((token) =>
+  const getByUserProfileId = (id) => {
+    return getToken().then((token) =>
       fetch(`/api/climb/getbyuser/${id}`, {
         method: "GET",
         headers: {
@@ -46,6 +46,7 @@ export const ClimbProvider = (props) => {
         .then((res) => res.json())
         .then(setCurrentUserClimbs)
     );
+  };
 
   const addClimb = (climb) => {
     return getToken().then((token) =>
@@ -65,6 +66,41 @@ export const ClimbProvider = (props) => {
     );
   };
 
+  const deleteClimb = (id, userId) =>
+    getToken().then((token) =>
+      fetch(`/api/climb/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((resp) => {
+        if (resp.ok) {
+          getByUserProfileId(userId);
+        } else {
+          throw new Error("Unauthorized");
+        }
+      })
+    );
+
+  const updateClimb = (climb, userId) => {
+    return getToken().then((token) =>
+      fetch(`/api/comment/${climb.id}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(climb),
+      }).then((resp) => {
+        if (resp.ok) {
+          getByUserProfileId(userId);
+        } else {
+          throw new Error("Unauthorized");
+        }
+      })
+    );
+  };
+
   return (
     <ClimbContext.Provider
       value={{
@@ -76,6 +112,8 @@ export const ClimbProvider = (props) => {
         setClimbs,
         addClimb,
         getClimbById,
+        deleteClimb,
+        updateClimb,
       }}
     >
       {props.children}
