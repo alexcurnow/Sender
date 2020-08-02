@@ -48,5 +48,24 @@ namespace Sender.Controllers
             _climbRepository.AddClimb(climb);
             return CreatedAtAction("Get", new { id = climb.Id }, climb);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _climbRepository.DeleteClimb(id);
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Climb climb)
+        {
+            if (id != climb.Id)
+            {
+                return BadRequest();
+            }
+            _climbRepository.Update(climb);
+            return NoContent();
+
+        }
     } 
 }
