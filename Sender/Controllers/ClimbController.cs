@@ -67,5 +67,20 @@ namespace Sender.Controllers
             return NoContent();
 
         }
+
+        [HttpGet("search")]
+        public IActionResult Search(string q)
+        {
+            if (q == null)
+            {
+                return Ok(_climbRepository.GetAll());
+
+            }
+            else
+            {
+                return Ok(_climbRepository.Search(q));
+            }
+        }
+
     } 
 }

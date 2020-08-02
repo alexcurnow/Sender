@@ -65,5 +65,22 @@ namespace Sender.Repositories
             _context.Entry(climb).State = EntityState.Modified;
             _context.SaveChanges();
         }
+
+        public List<Climb> Search(string criterion)
+        {
+            var query = _context.Climb
+                                .Include(c => c.Grade)
+                                .Include(c => c.State)
+                                .Where(c => c.Grade.Name.Contains(criterion) ||
+                                c.Gym.Contains(criterion) ||
+                                c.City.Contains(criterion) ||
+                                c.State.Name.Contains(criterion) ||
+                                c.State.Acronym.Contains(criterion) ||
+                                c.Notes.Contains(criterion))
+                                .OrderByDescending(c => c.DateCreated).ToList();
+
+            return query;
+
+        }
     }
 }

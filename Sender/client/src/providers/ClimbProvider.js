@@ -101,6 +101,19 @@ export const ClimbProvider = (props) => {
     );
   };
 
+  const searchClimbs = (searchTerm) => {
+    return getToken().then((token) =>
+      fetch(`/api/climb/search?q=${searchTerm}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then(setClimbs)
+    );
+  };
+
   return (
     <ClimbContext.Provider
       value={{
@@ -114,6 +127,7 @@ export const ClimbProvider = (props) => {
         getClimbById,
         deleteClimb,
         updateClimb,
+        searchClimbs,
       }}
     >
       {props.children}
