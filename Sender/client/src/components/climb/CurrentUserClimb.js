@@ -10,11 +10,12 @@ import {
 } from "reactstrap";
 import { ClimbContext } from "../../providers/ClimbProvider";
 import { Link } from "react-router-dom";
+import { EditClimbForm } from "./EditClimbForm";
 
 export const CurrentUserClimb = ({ climb }) => {
   const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
 
-  const { updateClimb, deleteClimb } = useContext(ClimbContext);
+  const { deleteClimb } = useContext(ClimbContext);
 
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -70,6 +71,14 @@ export const CurrentUserClimb = ({ climb }) => {
             No, go back
           </Button>
         </div>
+      </Modal>
+
+      <Modal isOpen={editModal}>
+        <EditClimbForm
+          climb={climb}
+          userId={userProfile.id}
+          toggleEdit={toggleEditModal}
+        />
       </Modal>
     </>
   );

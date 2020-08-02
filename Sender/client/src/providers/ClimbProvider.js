@@ -84,7 +84,7 @@ export const ClimbProvider = (props) => {
 
   const updateClimb = (climb, userId) => {
     return getToken().then((token) =>
-      fetch(`/api/comment/${climb.id}`, {
+      fetch(`/api/climb/${climb.id}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
