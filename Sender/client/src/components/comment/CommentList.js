@@ -12,7 +12,6 @@ import { NewCommentForm } from "./NewCommentForm";
 import { CommentContext } from "../../providers/CommentProvider";
 import { EditCommentForm } from "./EditCommentForm";
 import { Comment } from "./Comment";
-import { UserProfileContext } from "../../providers/UserProfileProvider";
 
 export const CommentList = ({ comments, climbId }) => {
   const [isOpen, setIsOpen] = useState(false);
