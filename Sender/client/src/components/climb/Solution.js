@@ -111,8 +111,9 @@ export const Solution = () => {
       }
     } else if (clickCount === moves.length) {
       alertComplete(moves);
-      addUserClimbSolved(newUserClimbSolved);
-      history.push("/");
+      addUserClimbSolved(newUserClimbSolved, userProfile.id).then(
+        history.push("/")
+      );
     }
   };
 

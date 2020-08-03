@@ -21,7 +21,7 @@ export const UserClimbSolvedProvider = (props) => {
     );
   };
 
-  const addUserClimbSolved = (userClimbSolved) => {
+  const addUserClimbSolved = (userClimbSolved, userId) => {
     return getToken().then((token) =>
       fetch("/api/userclimbsolved", {
         method: "POST",
@@ -30,12 +30,9 @@ export const UserClimbSolvedProvider = (props) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userClimbSolved),
-      }).then((resp) => {
-        if (resp.ok) {
-          return resp.json();
-        }
-        throw new Error("Unauthorized");
       })
+        .then((res) => res.json())
+        .then(getUserClimbsSolvedByUserProfileId(userId))
     );
   };
 
