@@ -8,7 +8,13 @@ export const ClimbList = (props) => {
   const { climbs, searchClimbs, getAllClimbs } = useContext(ClimbContext);
   const [terms, setTerms] = useState(null);
 
+  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+
   const debouncedSearchClimbs = debounce(searchClimbs, 500);
+
+  const filteredClimbs = climbs.filter(
+    (c) => c.userProfileId !== userProfile.id
+  );
 
   const handleChange = (e) => {
     debouncedSearchClimbs(e.target.value);
@@ -40,11 +46,13 @@ export const ClimbList = (props) => {
 
       <div className="climbList">
         {" "}
-        {climbs.map((c) => (
-          <div key={`climbCard${c.id}`} className="climbCard">
-            <Climb key={c.id} climb={c} />
-          </div>
-        ))}
+        {filteredClimbs.map((c) => {
+          return (
+            <div key={`climbCard${c.id}`} className="climbCard">
+              <Climb key={c.id} climb={c} />
+            </div>
+          );
+        })}
       </div>
     </>
   );

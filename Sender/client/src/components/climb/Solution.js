@@ -97,7 +97,7 @@ export const Solution = () => {
       <div className="movesListContainer">
         <ul>
           {moves.map((m) => (
-            <li className="invisible">
+            <li key={`moveList-${m.id}`} className="invisible">
               {m.sequenceNumber}) {m.limb.name} hold
             </li>
           ))}
