@@ -72,7 +72,7 @@ export const Solution = () => {
 
   const answerChecker = (e) => {
     if (clickCount !== moves.length) {
-      moves.forEach((move) => {
+      for (const move of moves) {
         if (
           e.nativeEvent.offsetX >= move.xcoord - 20 &&
           e.nativeEvent.offsetX <= move.xcoord + 20 &&
@@ -83,8 +83,31 @@ export const Solution = () => {
             `You found move ${move.sequenceNumber} of ${moves.length}! Looks like it's a ${move.limb.name} hold!`
           );
           setClickCount(clickCount + 1);
+          return;
         }
-      });
+      }
+      for (const move of moves) {
+        if (
+          e.nativeEvent.offsetX >= move.xcoord - 20 &&
+          e.nativeEvent.offsetX <= move.xcoord + 20 &&
+          e.nativeEvent.offsetY >= move.ycoord - 20 &&
+          e.nativeEvent.offsetY <= move.ycoord + 20
+        ) {
+          break;
+        } else if (
+          e.nativeEvent.offsetX < move.xcoord - 20 ||
+          e.nativeEvent.offsetY < move.ycoord - 20
+        ) {
+          alert("Mmm, not quite...");
+          break;
+        } else if (
+          e.nativeEvent.offsetX > move.xcoord + 20 ||
+          e.nativeEvent.offsetY > move.ycoord + 20
+        ) {
+          alert("Mmm, not quite...");
+          break;
+        }
+      }
     } else if (clickCount === moves.length) {
       alertComplete(moves);
       addUserClimbSolved(newUserClimbSolved);
