@@ -1,4 +1,4 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import React, { useContext, useEffect } from "react";
 import { ClimbContext } from "../../providers/ClimbProvider";
 import { CommentList } from "../comment/CommentList";
@@ -7,6 +7,7 @@ import { Card, CardImg, CardBody, Button } from "reactstrap";
 
 export const ClimbDetails = () => {
   const { id } = useParams();
+  const parsedId = parseInt(id);
 
   const history = useHistory();
 
@@ -29,6 +30,9 @@ export const ClimbDetails = () => {
           <p> {currentClimb.gym}</p>
           <p>{/* {currentClimb.city}, {currentClimb.state.acronym} */}</p>
         </CardBody>
+        <Link to={`/solution/${parsedId}`}>
+          <Button>Solve it!</Button>
+        </Link>
         <CommentList comments={comments} climbId={parseInt(id)} />
         <Button id="backToClimbs" onClick={() => history.push("/")}>
           Back
