@@ -36,27 +36,27 @@ export const Solution = () => {
     img.onload = () => {
       canvas.width = img.width;
       canvas.height = img.height;
-      canvas.style.height = "1000px";
-      canvas.style.width = "800px";
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      ctx.drawImage(img, 0, 0, img.width, img.height);
     };
   }, []);
 
-  // const drawCircle = (e) => {
-  //   const canvas = canvasRef.current;
+  const drawCircle = (e) => {
+    const canvas = canvasRef.current;
 
-  //   const ctx = canvas.getContext("2d");
-  //   contextRef.current = ctx;
+    const ctx = canvas.getContext("2d");
+    contextRef.current = ctx;
 
-  //   const x = e.nativeEvent.offsetX;
-  //   const y = e.nativeEvent.offsetY;
-  //   const r = 50;
+    const x = e.nativeEvent.offsetX;
+    const y = e.nativeEvent.offsetY;
+    const r = 20;
 
-  //   ctx.beginPath();
-  //   ctx.arc(x, y, r, Math.PI * 2, false);
-  //   ctx.strokeStyle = "blue";
-  //   ctx.stroke();
-  // };
+    ctx.beginPath();
+    ctx.arc(x, y, r, Math.PI * 2, false);
+    ctx.strokeStyle = "#FF0000";
+    ctx.lineWidth = 4;
+    ctx.stroke();
+  };
 
   const newUserClimbSolved = {
     userProfileId: userProfile.id,
@@ -82,6 +82,7 @@ export const Solution = () => {
           alert(
             `You found move ${move.sequenceNumber} of ${moves.length}! Looks like it's a ${move.limb.name} hold!`
           );
+          drawCircle(e);
           setClickCount(clickCount + 1);
           return;
         }
@@ -131,7 +132,6 @@ export const Solution = () => {
         <canvas
           onClick={(e) => {
             answerChecker(e);
-            // drawCircle(e);
           }}
           ref={canvasRef}
         ></canvas>

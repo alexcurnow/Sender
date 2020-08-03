@@ -37,8 +37,6 @@ export const BetaBuilder = () => {
     getAllLimbs();
 
     const canvas = canvasRef.current;
-    canvas.style.height = "1000px";
-    canvas.style.width = "800px";
 
     const ctx = canvas.getContext("2d");
     contextRef.current = ctx;
