@@ -6,7 +6,7 @@ export const ClimbContext = createContext();
 export const ClimbProvider = (props) => {
   const [climbs, setClimbs] = useState([]);
   const [currentUserClimbs, setCurrentUserClimbs] = useState([]);
-  const [currentClimb, setCurrentClimb] = useState({});
+  const [currentClimb, setCurrentClimb] = useState({ grade: {}, state: {} });
 
   const { getToken } = useContext(UserProfileContext);
 

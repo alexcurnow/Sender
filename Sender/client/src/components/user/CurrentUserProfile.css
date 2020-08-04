@@ -1,12 +1,17 @@
 .userProfile {
-  height: 200px;
-  width: 150px;
-  margin-right: -150px;
-  margin-top: 20px;
-  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.card-title {
+.userProfileImg {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.userProfileInfo {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

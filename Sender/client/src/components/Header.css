@@ -2,4 +2,12 @@
   height: 60px;
   width: auto;
   border-radius: 5px;
+  padding: 0;
+}
+
+.userProfileImg {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: auto;
 }

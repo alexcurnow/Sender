@@ -21,11 +21,11 @@ export default function ApplicationViews() {
         <Route path="/" exact>
           {isLoggedIn ? (
             <div className="dashboardContainer">
-              <div className="currentUserProfileContainer">
-                <CurrentUserProfile />
-              </div>
               <div className="climbListContainer">
                 <ClimbList />
+                <div className="currentUserProfileContainer">
+                  <CurrentUserProfile />
+                </div>
               </div>
             </div>
           ) : (

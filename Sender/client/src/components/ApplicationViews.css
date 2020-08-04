@@ -9,10 +9,9 @@
 }
 
 .currentUserProfileContainer {
-  display: flex;
-  /* margin-right: 275px;
+  position: absolute;
   margin-top: 20px;
-  margin-left: 20px; */
+  margin-left: 20px;
 }
 
 .currentUserClimbs {
