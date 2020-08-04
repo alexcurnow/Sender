@@ -18,6 +18,8 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
+  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+
   return (
     <div>
       <Navbar color="light" light expand="md">
@@ -54,6 +56,14 @@ export default function Header() {
           <Nav navbar>
             {isLoggedIn && (
               <>
+                {/* <NavItem>
+                  <img
+                    className="userProfileImg"
+                    width="100%"
+                    src={userProfile.imageLocation}
+                    alt="User Profile"
+                  />
+                </NavItem> */}
                 <NavItem>
                   <a
                     aria-current="page"

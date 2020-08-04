@@ -6,6 +6,7 @@ import {
   CardTitle,
   CardSubtitle,
   Button,
+  CardFooter,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -16,15 +17,18 @@ export const Climb = ({ climb }) => {
       <CardBody>
         <CardTitle>
           <Link to={`/climbs/${climb.id}`}>
-            <span>{climb.color}</span>
-            <span>{climb.grade.name}</span>
+            <span>{climb.color}</span> <span>{climb.grade.name}</span>
           </Link>
         </CardTitle>
+        <CardSubtitle>{climb.gym}</CardSubtitle>
         <CardSubtitle>
           {climb.city}, {climb.state.acronym}
         </CardSubtitle>
-        <Link to={`solution/${climb.id}`}>
-          <Button>Solve it!</Button>
+        <CardFooter>
+          Shared by <em>{climb.userProfile.displayName}</em>
+        </CardFooter>
+        <Link className="solveLink" to={`solution/${climb.id}`}>
+          <Button color="primary">Solve it!</Button>
         </Link>
       </CardBody>
     </Card>

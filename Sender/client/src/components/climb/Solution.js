@@ -119,15 +119,6 @@ export const Solution = () => {
 
   return (
     <>
-      <div className="movesListContainer">
-        <ul>
-          {moves.map((m) => (
-            <li key={`moveList-${m.id}`} className="invisible">
-              {m.sequenceNumber}) {m.limb.name} hold
-            </li>
-          ))}
-        </ul>
-      </div>
       <div className="solutionContainer">
         <h1>Send it!</h1>
         <canvas

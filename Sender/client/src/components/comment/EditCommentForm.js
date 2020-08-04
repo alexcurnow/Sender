@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { CommentContext } from "../../providers/CommentProvider";
-import { Button } from "reactstrap";
+import { Button, Form } from "reactstrap";
 
 export const EditCommentForm = ({ comment, climbId, toggle }) => {
   const { updateComment } = useContext(CommentContext);
@@ -17,7 +17,7 @@ export const EditCommentForm = ({ comment, climbId, toggle }) => {
   };
 
   return (
-    <form className="editCommentForm">
+    <Form>
       <fieldset>
         <div className="form-group">
           <label htmlFor="message">
@@ -45,6 +45,6 @@ export const EditCommentForm = ({ comment, climbId, toggle }) => {
         Save Updates
       </Button>
       <Button onClick={toggle}>Cancel</Button>
-    </form>
+    </Form>
   );
 };

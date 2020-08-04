@@ -21,12 +21,9 @@ export const NewCommentForm = ({ climbId, toggleModal }) => {
 
   return (
     <Form className="commentForm">
-      <h3>Add a New Comment</h3>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="message" className="form-label">
-            Message:
-          </label>
+          <label htmlFor="message" className="form-label"></label>
           <input
             type="text"
             name="message"
@@ -38,18 +35,23 @@ export const NewCommentForm = ({ climbId, toggleModal }) => {
           />
         </div>
       </fieldset>
-      <Button
-        type="submit"
-        className="btn btn-primary"
-        onClick={(evt) => {
-          evt.preventDefault();
-          createComment();
-          toggleModal();
-        }}
-      >
-        Save New Comment
-      </Button>
-      <Button onClick={() => toggleModal()}>Cancel</Button>
+      <div className="btns">
+        <Button
+          color="primary"
+          type="submit"
+          className="btn btn-primary"
+          onClick={(evt) => {
+            evt.preventDefault();
+            createComment();
+            toggleModal();
+          }}
+        >
+          Save New Comment
+        </Button>
+        <Button color="success" onClick={() => toggleModal()}>
+          Cancel
+        </Button>
+      </div>
     </Form>
   );
 };

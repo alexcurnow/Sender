@@ -11,6 +11,7 @@ import {
 import { ClimbContext } from "../../providers/ClimbProvider";
 import { Link } from "react-router-dom";
 import { EditClimbForm } from "./EditClimbForm";
+import "./CurrentUserClimb.css";
 
 export const CurrentUserClimb = ({ climb }) => {
   const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
@@ -34,22 +35,32 @@ export const CurrentUserClimb = ({ climb }) => {
             </Link>
           </CardTitle>
           <CardSubtitle>
-            Uploaded by <em>{climb.userProfile.displayName}</em>
             <div>{climb.gym}</div>
             <div>
               {climb.city}, {climb.state.acronym}
             </div>
-            Notes: {climb.notes}
           </CardSubtitle>
-          <Link to={`/betabuilder/${climb.id}`}>
-            <Button>Build the Beta!</Button>
-          </Link>
-          <Button color="info" onClick={toggleEditModal}>
-            Edit
-          </Button>
-          <Button color="danger" onClick={toggleDeleteModal}>
-            Delete
-          </Button>
+          <div className="betaBuilderBtn">
+            <Link to={`/betabuilder/${climb.id}`}>
+              <Button color="info">Build the Beta!</Button>
+            </Link>
+          </div>
+          <div className="currentUserClimbBtns">
+            <Button
+              style={{ marginRight: "auto" }}
+              color="success"
+              onClick={toggleEditModal}
+            >
+              Edit
+            </Button>
+            <Button
+              style={{ marginLeft: "auto" }}
+              color="danger"
+              onClick={toggleDeleteModal}
+            >
+              Delete
+            </Button>
+          </div>
         </CardBody>
       </Card>
 

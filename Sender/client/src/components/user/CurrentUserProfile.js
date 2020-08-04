@@ -19,19 +19,18 @@ export const CurrentUserProfile = () => {
   }, []);
 
   return (
-    <Card className="userProfile">
-      <CardImg
+    <div className="userProfile">
+      <img
         className="userProfileImg"
-        top
         width="100%"
         src={userProfile.imageLocation}
-        alt="User Profile Picture"
+        alt="User Profile"
       />
-      <CardBody>
-        <CardTitle>{userProfile.displayName}</CardTitle>
-        <CardSubtitle>Climbs Solved: {userClimbsSolved.length}</CardSubtitle>
-        <CardSubtitle>Climbs Uploaded: {currentUserClimbs.length}</CardSubtitle>
-      </CardBody>
-    </Card>
+      <div className="userProfileInfo">
+        <p>{userProfile.displayName}</p>
+        <p>Climbs Solved: {userClimbsSolved.length}</p>
+        <p>Climbs Uploaded: {currentUserClimbs.length}</p>
+      </div>
+    </div>
   );
 };

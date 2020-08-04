@@ -9,10 +9,9 @@
 }
 
 .currentUserProfileContainer {
-  display: flex;
-  /* margin-right: 275px;
+  position: absolute;
   margin-top: 20px;
-  margin-left: 20px; */
+  margin-left: 20px;
 }
 
 .currentUserClimbs {
@@ -22,6 +21,7 @@
 
 .solutionMainContainer {
   display: flex;
+  justify-content: center;
   flex-direction: row;
 }
 
@@ -29,7 +29,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 500px;
+  width: 700px;
   margin-right: auto;
   margin-left: auto;
 }

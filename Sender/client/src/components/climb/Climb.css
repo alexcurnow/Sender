@@ -20,5 +20,10 @@
 .searchbar {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
   width: 65%;
+}
+
+.solveLink {
+  margin-top: 20px;
 }

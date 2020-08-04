@@ -5,10 +5,6 @@
   margin-right: 10px;
 }
 
-.userProfile {
-  margin: 0;
-}
-
 .editDeleteContainer {
   display: flex;
   justify-content: flex-end;
@@ -26,4 +22,13 @@
 .deleteComment:hover {
   cursor: pointer;
   color: blue;
+}
+
+.userProfileComment {
+  border-bottom: 1px solid #aaa;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 5px;
 }
