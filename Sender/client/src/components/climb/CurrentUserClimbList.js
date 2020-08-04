@@ -14,7 +14,7 @@ export const CurrentUserClimbList = () => {
   return (
     <div className="climbList">
       {currentUserClimbs.map((c) => (
-        <div className="climbCard">
+        <div key={`climbCard-${c.id}`} className="climbCard">
           <CurrentUserClimb key={c.id} climb={c} />
         </div>
       ))}
