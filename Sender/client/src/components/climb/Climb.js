@@ -6,6 +6,7 @@ import {
   CardTitle,
   CardSubtitle,
   Button,
+  CardFooter,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -23,6 +24,9 @@ export const Climb = ({ climb }) => {
         <CardSubtitle>
           {climb.city}, {climb.state.acronym}
         </CardSubtitle>
+        <CardFooter>
+          Shared by <em>{climb.userProfile.displayName}</em>
+        </CardFooter>
         <Link className="solveLink" to={`solution/${climb.id}`}>
           <Button color="primary">Solve it!</Button>
         </Link>

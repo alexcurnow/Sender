@@ -18,7 +18,7 @@ export default function ApplicationViews() {
   return (
     <main>
       <Switch>
-        <Route path="/" exact>
+        <Route exact path="/">
           {isLoggedIn ? (
             <div className="dashboardContainer">
               <div className="climbListContainer">
@@ -47,6 +47,9 @@ export default function ApplicationViews() {
           {isLoggedIn ? (
             <div className="climbListContainer">
               <CurrentUserClimbList />
+              <div className="currentUserProfileContainer">
+                <CurrentUserProfile />
+              </div>
             </div>
           ) : (
             <Redirect to="/login" />
@@ -83,7 +86,7 @@ export default function ApplicationViews() {
           )}
         </Route>
 
-        <Route path="/login">
+        <Route exact path="/login">
           <Login />
         </Route>
 

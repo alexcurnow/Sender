@@ -56,14 +56,14 @@ export default function Header() {
           <Nav navbar>
             {isLoggedIn && (
               <>
-                <NavItem>
+                {/* <NavItem>
                   <img
                     className="userProfileImg"
                     width="100%"
                     src={userProfile.imageLocation}
                     alt="User Profile"
                   />
-                </NavItem>
+                </NavItem> */}
                 <NavItem>
                   <a
                     aria-current="page"

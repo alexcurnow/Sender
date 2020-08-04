@@ -9,11 +9,6 @@
   display: none;
 }
 
-.movesListContainer {
-  margin-top: 60px;
-  margin-right: 100px;
-}
-
 .invisible {
   visibility: hidden;
 }

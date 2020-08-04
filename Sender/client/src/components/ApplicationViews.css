@@ -21,6 +21,7 @@
 
 .solutionMainContainer {
   display: flex;
+  justify-content: center;
   flex-direction: row;
 }
 
@@ -28,7 +29,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 500px;
+  width: 700px;
   margin-right: auto;
   margin-left: auto;
 }

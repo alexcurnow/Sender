@@ -23,25 +23,36 @@ export const ClimbDetails = () => {
 
   return (
     <>
-      <Card className="m-4">
+      <Card className="m-4 climbDetailsCard">
         <p className="text-left px-2"></p>
         <CardImg top src={currentClimb.imageUrl} alt="climb image" />
         <CardBody>
           <p>
+            <strong>{currentClimb.color}</strong>{" "}
             <strong>{currentClimb.grade.name}</strong>
           </p>
-          <p> {currentClimb.gym}</p>
           <p>
-            {currentClimb.city}, {currentClimb.state.acronym}
+            {" "}
+            {currentClimb.gym} // {currentClimb.city},{" "}
+            {currentClimb.state.acronym}
           </p>
+
+          <p>Notes: {currentClimb.notes}</p>
         </CardBody>
         <div className="btns">
-          <Link className="solveLink" to={`/solution/${parsedId}`}>
-            <Button color="primary">Solve it!</Button>
-            <Button id="backToClimbs" onClick={() => history.push("/")}>
-              Back
-            </Button>
-          </Link>
+          <Button
+            onClick={(e) => history.push(`/solution/${parsedId}`)}
+            color="info"
+          >
+            Solve it!
+          </Button>
+          <Button
+            color="success"
+            id="backToClimbs"
+            onClick={() => history.push("/")}
+          >
+            Back
+          </Button>
         </div>
         <CommentList comments={comments} climbId={parseInt(id)} />
       </Card>
