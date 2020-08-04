@@ -24,7 +24,7 @@ export const Comment = ({ c, toggleEdit, toggleDelete, setComment }) => {
             <img
               className="profileImg"
               src={c.userProfile.imageLocation}
-              alt="user profile image"
+              alt="user profile"
             />
             <span>{c.userProfile.displayName}</span>
           </ToastHeader>
@@ -65,7 +65,7 @@ export const Comment = ({ c, toggleEdit, toggleDelete, setComment }) => {
           <img
             className="profileImg"
             src={c.userProfile.imageLocation}
-            alt="user profile image"
+            alt="user profile"
           />
           <span>{c.userProfile.displayName}</span>
         </ToastHeader>

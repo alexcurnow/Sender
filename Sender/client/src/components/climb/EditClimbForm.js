@@ -6,7 +6,7 @@ import { StateContext } from "../../providers/StateProvider";
 import { Button, Form, FormGroup, Label, Input, Spinner } from "reactstrap";
 
 export const EditClimbForm = (props) => {
-  // const history = useHistory();
+  const history = useHistory();
 
   const { updateClimb } = useContext(ClimbContext);
   const { grades, getAllGrades } = useContext(GradeContext);
@@ -26,8 +26,9 @@ export const EditClimbForm = (props) => {
   }, []);
 
   const editClimb = () => {
-    updateClimb(updatedClimb, props.userId).then(props.toggleEdit);
-    // .then(history.push("/userclimbs"));
+    updateClimb(updatedClimb, props.userId)
+      .then(props.toggleEdit)
+      .then(history.push("/userclimbs"));
   };
 
   return (

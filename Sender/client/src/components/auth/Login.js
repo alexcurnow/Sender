@@ -20,7 +20,8 @@ export default function Login() {
 
   return (
     <div className="login">
-      <Form onSubmit={loginSubmit}>
+      <h1 className="welcome">Welcome to Sender</h1>
+      <Form className="loginForm" onSubmit={loginSubmit}>
         <fieldset>
           <FormGroup>
             <Label for="email">Email</Label>
@@ -38,12 +39,14 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormGroup>
-          <FormGroup>
+          <FormGroup className="loginBtn">
             <Button>Login</Button>
           </FormGroup>
-          <em>
-            Not registered? <Link to="register">Register</Link>
-          </em>
+          <div className="registerLink">
+            <em>
+              Not registered? <Link to="register">Register</Link>
+            </em>
+          </div>
         </fieldset>
       </Form>
     </div>
