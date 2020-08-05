@@ -1,4 +1,4 @@
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import React, { useContext, useEffect } from "react";
 import { ClimbContext } from "../../providers/ClimbProvider";
 import { CommentList } from "../comment/CommentList";

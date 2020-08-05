@@ -71,7 +71,10 @@ namespace Sender.Repositories
             var query = _context.Climb
                                 .Include(c => c.Grade)
                                 .Include(c => c.State)
+                                .Include(c => c.UserProfile)
                                 .Where(c => c.Grade.Name.Contains(criterion) ||
+                                c.UserProfile.DisplayName.Contains(criterion) ||
+                                c.Color.Contains(criterion) ||
                                 c.Gym.Contains(criterion) ||
                                 c.City.Contains(criterion) ||
                                 c.State.Name.Contains(criterion) ||

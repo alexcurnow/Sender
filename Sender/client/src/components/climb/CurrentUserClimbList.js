@@ -11,13 +11,15 @@ export const CurrentUserClimbList = () => {
     getByUserProfileId(userProfile.id);
   }, []);
 
-  return (
+  return currentUserClimbs !== null ? (
     <div className="climbList">
       {currentUserClimbs.map((c) => (
-        <div className="climbCard">
+        <div key={`climbCard-${c.id}`} className="climbCard">
           <CurrentUserClimb key={c.id} climb={c} />
         </div>
       ))}
     </div>
+  ) : (
+    <h1 className="placeholder">You have no climbs uploaded (yet)...</h1>
   );
 };

@@ -26,7 +26,6 @@ export default function Register() {
         email,
         firstName,
         lastName,
-        password,
         imageLocation,
       };
       register(userProfile, password).then(() => history.push("/"));

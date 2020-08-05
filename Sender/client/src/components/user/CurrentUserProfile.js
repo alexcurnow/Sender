@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import "./CurrentUserProfile.css";
 import { UserClimbSolvedContext } from "../../providers/UserClimbSolvedProvider";
 import { ClimbContext } from "../../providers/ClimbProvider";
