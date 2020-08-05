@@ -8,6 +8,19 @@ export const MoveProvider = (props) => {
 
   const { getToken } = useContext(UserProfileContext);
 
+  const getAllMoves = () => {
+    return getToken().then((token) =>
+      fetch(`/api/move`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then(setMoves)
+    );
+  };
+
   const getMovesByClimbId = (id) => {
     return getToken().then((token) =>
       fetch(`/api/move/getbyclimb/${id}`, {
@@ -45,6 +58,7 @@ export const MoveProvider = (props) => {
         moves,
         addMove,
         getMovesByClimbId,
+        getAllMoves,
       }}
     >
       {props.children}

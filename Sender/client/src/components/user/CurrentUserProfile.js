@@ -4,7 +4,7 @@ import { UserClimbSolvedContext } from "../../providers/UserClimbSolvedProvider"
 import { ClimbContext } from "../../providers/ClimbProvider";
 
 export const CurrentUserProfile = () => {
-  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+  const userProfile = JSON.parse(localStorage.getItem("userProfile"));
 
   const { userClimbsSolved, getUserClimbsSolvedByUserProfileId } = useContext(
     UserClimbSolvedContext

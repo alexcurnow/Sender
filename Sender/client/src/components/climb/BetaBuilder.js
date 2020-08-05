@@ -3,7 +3,15 @@ import { ClimbContext } from "../../providers/ClimbProvider";
 import { useParams, useHistory } from "react-router-dom";
 import "./BetaBuilder.css";
 import { LimbContext } from "../../providers/LimbProvider";
-import { Modal, Button } from "reactstrap";
+import {
+  Modal,
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu,
+  ModalBody,
+} from "reactstrap";
 import { LimbSelect } from "../limb/LimbSelect";
 import { MoveContext } from "../../providers/MoveProvider";
 
@@ -71,40 +79,77 @@ export const BetaBuilder = () => {
     history.push("/");
   };
 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen(!dropdownOpen);
+
   return (
     <>
       <h1>Build your beta</h1>
-      <Modal isOpen={limbModal}>
-        <LimbSelect
-          limbs={limbs}
-          setLimb={setLimb}
-          toggleLimbModal={toggleLimbModal}
-          setMovesList={setMovesList}
-          newMove={newMove}
-          movesList={movesList}
-        />
+
+      <Modal isOpen={limbModal} toggle={toggleLimbModal}>
+        <ModalBody>
+          <LimbSelect
+            limbs={limbs}
+            setLimb={setLimb}
+            toggleLimbModal={toggleLimbModal}
+            setMovesList={setMovesList}
+            newMove={newMove}
+            movesList={movesList}
+          />
+        </ModalBody>
       </Modal>
-      <canvas
-        onClick={(e) => {
-          getCoords(e);
-          toggleLimbModal();
-        }}
-        ref={canvasRef}
-      ></canvas>
-      <img
-        className="hidden"
-        ref={imageRef}
-        src={currentClimb.imageUrl}
-        alt="climbing problem"
-      />
-      <Button
-        className="submitBeta"
-        onClick={(e) => {
-          uploadMovesList(movesList);
-        }}
-      >
-        Upload Beta
-      </Button>
+      <h3>Instructions</h3>
+      <div className="instructionCanvasContainer">
+        <div className="instructions">
+          <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+            <DropdownToggle caret>What do I do?</DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem>
+                Click the holds in the order you did the climb.
+              </DropdownItem>
+              <DropdownItem>
+                Try to click precisely where you touched each hold.
+              </DropdownItem>
+              <DropdownItem>
+                Select which hand or foot went on the hold you clicked.
+              </DropdownItem>
+              <DropdownItem>
+                Once you've added all the moves, click the <b>Upload Beta</b>
+              </DropdownItem>
+              <DropdownItem>
+                button and you're all set! You'll be taken back to your
+                dashboard
+              </DropdownItem>
+              <DropdownItem>
+                where you can see your climb among the other user climbs.
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </div>
+        <div className="canvas">
+          <canvas
+            onClick={(e) => {
+              getCoords(e);
+              toggleLimbModal();
+            }}
+            ref={canvasRef}
+          ></canvas>
+          <img
+            className="hidden"
+            ref={imageRef}
+            src={currentClimb.imageUrl}
+            alt="climbing problem"
+          />
+          <Button
+            className="submitBeta"
+            onClick={(e) => {
+              uploadMovesList(movesList);
+            }}
+          >
+            Upload Beta
+          </Button>
+        </div>
+      </div>
     </>
   );
 };

@@ -10,7 +10,7 @@ export const Solution = () => {
   const parsedId = parseInt(id);
   const history = useHistory();
 
-  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+  const userProfile = JSON.parse(localStorage.getItem("userProfile"));
 
   const [clickCount, setClickCount] = useState(1);
 

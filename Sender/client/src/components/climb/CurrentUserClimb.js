@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   Card,
   CardImg,
@@ -12,17 +12,25 @@ import { ClimbContext } from "../../providers/ClimbProvider";
 import { Link } from "react-router-dom";
 import { EditClimbForm } from "./EditClimbForm";
 import "./CurrentUserClimb.css";
+import { MoveContext } from "../../providers/MoveProvider";
 
 export const CurrentUserClimb = ({ climb }) => {
-  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+  const userProfile = JSON.parse(localStorage.getItem("userProfile"));
 
   const { deleteClimb } = useContext(ClimbContext);
+  const { moves, getAllMoves } = useContext(MoveContext);
 
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
 
   const toggleEditModal = () => setEditModal(!editModal);
   const toggleDeleteModal = () => setDeleteModal(!deleteModal);
+
+  useEffect(() => {
+    getAllMoves();
+  }, []);
+
+  const anyMatchingMove = moves.find((m) => m.climbId === climb.id);
 
   return (
     <>
@@ -41,9 +49,13 @@ export const CurrentUserClimb = ({ climb }) => {
             </div>
           </CardSubtitle>
           <div className="betaBuilderBtn">
-            <Link to={`/betabuilder/${climb.id}`}>
-              <Button color="info">Build the Beta!</Button>
-            </Link>
+            {anyMatchingMove ? (
+              <Button color="primary">Beta Uploaded</Button>
+            ) : (
+              <Link to={`/betabuilder/${climb.id}`}>
+                <Button color="info">Build the Beta</Button>
+              </Link>
+            )}
           </div>
           <div className="currentUserClimbBtns">
             <Button

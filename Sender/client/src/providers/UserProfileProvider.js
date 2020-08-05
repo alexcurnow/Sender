@@ -8,7 +8,7 @@ export const UserProfileContext = createContext();
 export function UserProfileProvider(props) {
   const apiUrl = "/api/userprofile";
 
-  const userProfile = sessionStorage.getItem("userProfile");
+  const userProfile = localStorage.getItem("userProfile");
   const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
 
   const [isFirebaseReady, setIsFirebaseReady] = useState(false);
@@ -26,7 +26,7 @@ export function UserProfileProvider(props) {
       .signInWithEmailAndPassword(email, pw)
       .then((signInResponse) => getUserProfile(signInResponse.user.uid))
       .then((userProfile) =>
-        sessionStorage.setItem("userProfile", JSON.stringify(userProfile))
+        localStorage.setItem("userProfile", JSON.stringify(userProfile))
       );
   };
 
@@ -34,7 +34,7 @@ export function UserProfileProvider(props) {
     return firebase
       .auth()
       .signOut()
-      .then(() => sessionStorage.clear());
+      .then(() => localStorage.clear());
   };
 
   const register = (userProfile, password) => {
@@ -45,7 +45,7 @@ export function UserProfileProvider(props) {
         saveUser({ ...userProfile, firebaseUserId: createResponse.user.uid })
       )
       .then((savedUserProfile) =>
-        sessionStorage.setItem("userProfile", JSON.stringify(savedUserProfile))
+        localStorage.setItem("userProfile", JSON.stringify(savedUserProfile))
       );
   };
 
