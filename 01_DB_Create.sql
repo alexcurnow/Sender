@@ -82,7 +82,7 @@ CREATE TABLE [Move] (
   [Ycoord] int NOT NULL,
   [Radius] int NOT NULL
 
-  CONSTRAINT FK_Move_Climb FOREIGN KEY (ClimbId) REFERENCES Climb(Id),
+  CONSTRAINT FK_Move_Climb FOREIGN KEY (ClimbId) REFERENCES Climb(Id) ON DELETE CASCADE,
   CONSTRAINT FK_Move_Limb FOREIGN KEY (LimbId) REFERENCES Limb(Id),
 
 )
@@ -96,7 +96,7 @@ CREATE TABLE [Comment] (
   [DateCreated] datetime NOT NULL
 
   CONSTRAINT FK_Comment_UserProfile FOREIGN KEY (UserProfileId) REFERENCES UserProfile(Id),
-  CONSTRAINT FK_Comment_Climb FOREIGN KEY (ClimbId) REFERENCES Climb(Id),
+  CONSTRAINT FK_Comment_Climb FOREIGN KEY (ClimbId) REFERENCES Climb(Id) ON DELETE CASCADE,
 )
 GO
 
@@ -106,7 +106,7 @@ CREATE TABLE [UserClimbSolved] (
   [ClimbId] int NOT NULL
 
   CONSTRAINT FK_UserClimbSolved_UserProfile FOREIGN KEY (UserProfileId) REFERENCES UserProfile(Id),
-  CONSTRAINT FK_UserClimbSolved_Climb FOREIGN KEY (ClimbId) REFERENCES Climb(Id),
+  CONSTRAINT FK_UserClimbSolved_Climb FOREIGN KEY (ClimbId) REFERENCES Climb(Id) ON DELETE CASCADE,
 )
 GO
 
