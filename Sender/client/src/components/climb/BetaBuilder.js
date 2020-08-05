@@ -10,6 +10,7 @@ import {
   DropdownItem,
   DropdownToggle,
   DropdownMenu,
+  ModalBody,
 } from "reactstrap";
 import { LimbSelect } from "../limb/LimbSelect";
 import { MoveContext } from "../../providers/MoveProvider";
@@ -86,14 +87,16 @@ export const BetaBuilder = () => {
       <h1>Build your beta</h1>
 
       <Modal isOpen={limbModal} toggle={toggleLimbModal}>
-        <LimbSelect
-          limbs={limbs}
-          setLimb={setLimb}
-          toggleLimbModal={toggleLimbModal}
-          setMovesList={setMovesList}
-          newMove={newMove}
-          movesList={movesList}
-        />
+        <ModalBody>
+          <LimbSelect
+            limbs={limbs}
+            setLimb={setLimb}
+            toggleLimbModal={toggleLimbModal}
+            setMovesList={setMovesList}
+            newMove={newMove}
+            movesList={movesList}
+          />
+        </ModalBody>
       </Modal>
       <h3>Instructions</h3>
       <div className="instructionCanvasContainer">
