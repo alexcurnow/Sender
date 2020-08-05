@@ -8,7 +8,7 @@ export const ClimbList = (props) => {
   const { climbs, searchClimbs, getAllClimbs } = useContext(ClimbContext);
   const [terms, setTerms] = useState(null);
 
-  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+  const userProfile = JSON.parse(localStorage.getItem("userProfile"));
 
   const debouncedSearchClimbs = debounce(searchClimbs, 500);
 

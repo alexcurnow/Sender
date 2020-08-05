@@ -4,7 +4,7 @@ import "./Comment.css";
 export const Comment = ({ c, toggleEdit, toggleDelete, setComment }) => {
   const [date, time] = c.dateCreated.split("T");
 
-  const currentUser = JSON.parse(sessionStorage.getItem("userProfile"));
+  const currentUser = JSON.parse(localStorage.getItem("userProfile"));
 
   return c.userProfileId === currentUser.id ? (
     <>

@@ -5,7 +5,7 @@ import "./Climb.css";
 
 export const CurrentUserClimbList = () => {
   const { currentUserClimbs, getByUserProfileId } = useContext(ClimbContext);
-  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+  const userProfile = JSON.parse(localStorage.getItem("userProfile"));
 
   useEffect(() => {
     getByUserProfileId(userProfile.id);

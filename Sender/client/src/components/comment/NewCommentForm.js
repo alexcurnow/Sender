@@ -4,7 +4,7 @@ import { Button, Form } from "reactstrap";
 
 export const NewCommentForm = ({ climbId, toggleModal }) => {
   const { addComment } = useContext(CommentContext);
-  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+  const userProfile = JSON.parse(localStorage.getItem("userProfile"));
 
   const message = useRef();
 

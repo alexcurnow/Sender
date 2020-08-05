@@ -18,7 +18,7 @@ export const NewClimbForm = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+  const userProfile = JSON.parse(localStorage.getItem("userProfile"));
   const [grade, setGrade] = useState();
   const [color, setColor] = useState();
   const [image, setImage] = useState();

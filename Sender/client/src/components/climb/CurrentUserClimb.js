@@ -14,7 +14,7 @@ import { EditClimbForm } from "./EditClimbForm";
 import "./CurrentUserClimb.css";
 
 export const CurrentUserClimb = ({ climb }) => {
-  const userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+  const userProfile = JSON.parse(localStorage.getItem("userProfile"));
 
   const { deleteClimb } = useContext(ClimbContext);
 
