@@ -44,7 +44,6 @@ CREATE TABLE [UserProfile] (
   [FirebaseUserId] nvarchar(255) NOT NULL,
   [DisplayName] nvarchar(50) NOT NULL,
   [Email] nvarchar(50) NOT NULL,
-	[Password] nvarchar(50) NOT NULL,
   [FirstName] nvarchar(50) NOT NULL,
   [LastName] nvarchar(50) NOT NULL,
   [ImageLocation] nvarchar(255) NOT NULL
@@ -116,8 +115,8 @@ SET IDENTITY_INSERT [UserProfile] ON
 INSERT INTO [UserProfile]
 	([Id], [FirebaseUserId], [DisplayName], [Email], [Password], [FirstName], [LastName], [ImageLocation])
 VALUES
-	(1, 'F9SmhabVZ6cXIiCq91GFk6VtfGP2', 'alexcurnow', 'alex@alex.com', 'alex@a', 'Alex', 'Curnow', 'https://api.adorable.io/avatars/105/alex@alex.com'),
-	(2, 'PlqygTbWU1MNnuypKKd9PVuuKuB2', 'byeckyalou', 'becky@becky.com', 'becky@', 'Becky', 'Roubos', 'https://api.adorable.io/avatars/105/becky@becky.com')
+	(1, 'F9SmhabVZ6cXIiCq91GFk6VtfGP2', 'alexcurnow', 'alex@alex.com', 'Alex', 'Curnow', 'https://api.adorable.io/avatars/105/alex@alex.com'),
+	(2, 'PlqygTbWU1MNnuypKKd9PVuuKuB2', 'byeckyalou', 'becky@becky.com', 'Becky', 'Roubos', 'https://api.adorable.io/avatars/105/becky@becky.com')
 SET IDENTITY_INSERT [UserProfile] OFF
 
 
